@@ -3,20 +3,19 @@ package member;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class LogonDataBean {
-
+public class MemberDataBean {
+	private String id;				//아이디	
+	private String passwd;			//비밀번호
+	private String name;			//이름
+	private Timestamp reg_date;		//생성날짜
+	private int num;				//맴버 번호
+	private String email;			//이메일
+	private String address;			//주소
+	private int sex;				//성별
+	private Date birth;				//생년월일
 	
-	private String id;			
-	private String passwd;		
-	private String name;		
-	private Timestamp reg_date;	
-	private int num;			
-	private String email;		
-	private String address;		
-	private int sex;			
-	private Date birth;			
-
-	
+	//사용자에게 표시되는것 
+	//아이디, 비밀번호, 이름, 이메일 , 주소, 성별, 생년월일
 	public Timestamp getReg_date() {
 		return reg_date;
 	}

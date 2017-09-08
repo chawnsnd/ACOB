@@ -3,7 +3,7 @@
 <%--이거는 html소스 볼때 빈칸 없애주는거 --%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%--회원 데이터 빈 --%>
-<%@page import="member.LogonDBBean" %>
+<%@page import="member.MemberDBBean" %>
 <% request.setCharacterEncoding("utf-8");%>
 
 <%	
@@ -12,12 +12,12 @@
 	String id = request.getParameter("id");
 	String passwd = request.getParameter("passwd");
 	
-	LogonDBBean member = LogonDBBean.getInstance();
+	MemberDBBean member = MemberDBBean.getInstance();
 	int check = member.userCheck(id, passwd);
 	
 	if(check==1){
 		session.setAttribute("memberId", id);
-		response.sendRedirect("../loginMain.jsp");
+		response.sendRedirect("loginMain.jsp");
 	}else if(check==0){%>
 	<script>
 		alert("비밀번호가 맞지 않습니다.");
