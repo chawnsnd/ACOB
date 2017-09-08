@@ -1,11 +1,58 @@
 package member;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class LogonDataBean {
-	//필요한 정보 더 넣기
-	private String name;	//이름
-	private String passwd;	//비밀번호
-	private String id;		//id
+
 	
+	private String id;			
+	private String passwd;		
+	private String name;		
+	private Timestamp reg_date;	
+	private int num;			
+	private String email;		
+	private String address;		
+	private int sex;			
+	private Date birth;			
+
+	
+	public Timestamp getReg_date() {
+		return reg_date;
+	}
+	public void setReg_date(Timestamp reg_date) {
+		this.reg_date = reg_date;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public int getSex() {
+		return sex;
+	}
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+	public Date getBirth() {
+		return birth;
+	}
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
 	public String getName() {
 		return name;
 	}

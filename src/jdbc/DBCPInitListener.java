@@ -17,13 +17,11 @@ import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
 
-//SeveletContextListener는 처음 웹어플리케이션 실행할 때 실행되는 클래스
 public class DBCPInitListener implements ServletContextListener{
 	
-	@Override //이게 SeveletContextListener 주 메소드
+	@Override
 	public void contextInitialized(ServletContextEvent sce){
 		
-		//poolConfig는 web.xml에 등록한 파라미터들
 		String poolConfig=
 				sce.getServletContext().getInitParameter("poolConfig");
 		Properties prop = new Properties();
@@ -33,11 +31,10 @@ public class DBCPInitListener implements ServletContextListener{
 			e.printStackTrace();
 		}
 		
-		loadJDBCDriver(prop); //JDBC드라이버를 로딩함
-		initConnectionPool(prop); //커넥션풀 만듬
+		loadJDBCDriver(prop);
+		initConnectionPool(prop);
 	}
 	
-	//JDBC드라이버를 로딩함
 	private void loadJDBCDriver(Properties prop){
 		String driverClass=prop.getProperty("jdbcdriver");
 		try {
@@ -47,7 +44,6 @@ public class DBCPInitListener implements ServletContextListener{
 		}
 	}
 	
-	//커넥션풀 생성
 	private void initConnectionPool(Properties prop){
 		try{
 		String jdbcUrl = prop.getProperty("jdbcUrl");
@@ -59,9 +55,8 @@ public class DBCPInitListener implements ServletContextListener{
 		
 		PoolableConnectionFactory poolableConnFactory =
 				new PoolableConnectionFactory(connFactory, null);
-		poolableConnFactory.setValidationQuery("select 1"); //테스트 쿼리
+		poolableConnFactory.setValidationQuery("select 1");
 		
-		//커넥션풀 설정
 		GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
 		poolConfig.setTimeBetweenEvictionRunsMillis(1000L*60L*5L);
 		poolConfig.setTestWhileIdle(true);
