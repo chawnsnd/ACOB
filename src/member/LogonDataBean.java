@@ -1,10 +1,9 @@
 package member;
 
 public class LogonDataBean {
-	//필요한 정보 더 넣기
-	private String name;	//이름
-	private String passwd;	//비밀번호
-	private String id;		//id
+	private String name;	
+	private String passwd;	
+	private String id;		
 	
 	public String getName() {
 		return name;
