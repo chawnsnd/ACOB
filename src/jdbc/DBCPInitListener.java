@@ -50,6 +50,7 @@ public class DBCPInitListener implements ServletContextListener{
 	
 	//目池记钱 积己
 	private void initConnectionPool(Properties prop){
+		try{
 		String jdbcUrl = prop.getProperty("jdbcUrl");
 		String username = prop.getProperty("dbUser");
 		String pw = prop.getProperty("dbPass");
@@ -71,17 +72,15 @@ public class DBCPInitListener implements ServletContextListener{
 		GenericObjectPool<PoolableConnection> connectionPool =
 				new GenericObjectPool<>(poolableConnFactory, poolConfig);
 		poolableConnFactory.setPool(connectionPool);
-		try {
-			Class.forName("org.apache.commons.dbcp2.PoolongDriver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		try {
-			PoolingDriver driver = (PoolingDriver)
-					DriverManager.getDriver("jdbc:apache:commons:dbcp:");
-			String poolName = prop.getProperty("poolName");
-			driver.registerPool(poolName, connectionPool);
-		} catch (SQLException e) {
+
+		Class.forName("org.apache.commons.dbcp2.PoolingDriver");
+
+		PoolingDriver driver = (PoolingDriver)
+				DriverManager.getDriver("jdbc:apache:commons:dbcp:");
+		String poolName = prop.getProperty("poolName");
+		driver.registerPool(poolName, connectionPool);
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
