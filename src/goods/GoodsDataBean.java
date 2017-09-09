@@ -1,13 +1,21 @@
 package goods;
 
-//»óÇ° ºó
+
 public class GoodsDataBean {
-	//ÇÊ¿äÇÑ Á¤º¸ ´õ ³Ö±â
-	private int no; 		//»óÇ° °ü¸®¹øÈ£
-	private String name;	//»óÇ°ÀÌ¸§
-	private int price;	//°¡°İ
-	private String company;	//Á¦Á¶È¸»ç
-	private int stock; //Àç°í
+
+	private int no; 		//ìƒí’ˆë²ˆí˜¸
+	private String name;	//ìƒí’ˆì´ë¦„
+	private int price;		//ìƒí’ˆê°€ê²©
+	private String company;	//ì œì¡°íšŒì‚¬
+	private int stock;		//ì¬ê³ 
+	private String category; //ìƒí’ˆë¶„ë¥˜
+	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	
 	public int getNo() {
 		return no;

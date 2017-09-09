@@ -26,4 +26,26 @@
 </context-param>
 <!-- DB Driver 설정을 변경하고 싶으면 여길 건드리세요 -->
 
+
+
+
+<!-- 앞으로 모든 요청파라미터는 이 필터를 거쳐 UTF8로 변환됩니다. -->
+<filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+    </init-param>
+</filter>
+
+<filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+<!-- 앞으로 모든 요청파라미터는 이 필터를 거쳐 UTF8로 변환됩니다. -->
+
+
+
+
 </web-app>
