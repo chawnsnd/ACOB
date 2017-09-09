@@ -46,9 +46,10 @@ public class DBCPInitListener implements ServletContextListener{
 	
 	private void initConnectionPool(Properties prop){
 		try{
-		String jdbcUrl = "jdbc:mysql://acobdb.cfkyb8lx9cc7.ap-northeast-2.rds.amazonaws.com:3306/acob?useUnicode=true&characterEncoding=UTF8";
+		String jdbcUrl = prop.getProperty("jdbcUrl");
 		String username = prop.getProperty("dbUser");
 		String pw = prop.getProperty("dbPass");
+		jdbcUrl = jdbcUrl+"?useUnicode=true&characterEncoding=UTF8";
 		
 		ConnectionFactory connFactory =
 				new DriverManagerConnectionFactory(jdbcUrl, username, pw);
