@@ -9,3 +9,5 @@ create table goods(
     stock int,
     category varchar(20)
 )engine=InnoDB default character set = utf8;
+
+select * from goods;
